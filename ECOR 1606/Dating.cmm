@@ -1,0 +1,48 @@
+{
+
+    // Constants
+    const double CDConstant = 0.0001216;
+
+    // Variables
+    double fraction,
+           age,
+           inputcount,
+           validcount = 0,
+           sum = 0,
+           maxage,
+           minage;
+
+    cout << "Please enter a fraction: ";
+    cin >> fraction;
+    inputcount = 0;
+    while (fraction!=2) {
+        inputcount = inputcount+1;
+        if (fraction<=0 || fraction > 1) {
+            cout << "Error";
+            cout << endl;
+        } else {
+            validcount = validcount+1;
+            age = -(log(fraction)/CDConstant);
+            sum = sum+age;
+            if (validcount == 1 || age>maxage) {
+                maxage = age;
+            } // end if
+            if (validcount == 1 || age<minage) {
+                minage = age;
+            } // end if
+            cout << "The age of that sample is: " << age;
+            cout << endl;
+        } // end if
+        cout << "Please enter a fraction: ";
+        cin >> fraction;
+    } // end while
+    cout << "The total number of inputs was: " << inputcount << endl;
+    cout << "The number of valid inputs was: " << validcount << endl;
+    cout << "The number of invalid counts is: " << inputcount- validcount << endl;
+    if (inputcount>0) {
+        cout << "The percent of valid inputs was: " << 100.*validcount/inputcount << " %" << endl;
+    } // end if
+    if (validcount>0) {
+    } // end if
+
+}

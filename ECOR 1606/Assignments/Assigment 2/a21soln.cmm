@@ -1,0 +1,27 @@
+// This program estimates pi based on positive integer n
+
+{
+
+  // Variables
+  double count = 1,
+         piEstimate = 0,
+         multFact = 1,
+         n;
+
+  // Prompt for n and capture value from user
+  cout << "Please enter a positive integer: ";
+  cin >> n;
+  // Test n to ensure it is an integer and greater than 0
+  if (! (isInt(n) && n>0)) {
+    cout << "Invalid input: n must be an integer greater than 0" << endl;
+  } else {
+    while (n>=0) {
+      piEstimate = piEstimate + multFact * 4.0/count;
+      multFact = -1 * multFact;
+      count = count + 2;
+      n = n - 1;
+    } // end while
+    cout << "The estimated value of pi is: " << piEstimate << endl;
+  } // end if
+
+}

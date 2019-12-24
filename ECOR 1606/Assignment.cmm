@@ -1,0 +1,17 @@
+{
+
+    // Variables
+    double a,
+           b,
+           c,
+           tries;
+
+    cout << "Please enter a value: ";
+    cin >> a;
+    while (a<0) {
+        cout << "Invalid." << endl;
+        cout << "Please enter a value: ";
+        cin >> a;
+    } // end while
+
+}

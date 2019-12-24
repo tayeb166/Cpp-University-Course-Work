@@ -1,0 +1,73 @@
+// Determines if a house fits a given lot
+
+{
+
+  // Constants
+  const double LOTCLEARANCE = 2;
+
+  // Variables
+  double lotWidth = 0,
+         lotLength = 0,
+         houseWidth = 0,
+         houseLength = 0,
+         temp;
+
+  // Get first lot size
+  cout << "Enter lot width and length: ";
+  cin >> lotWidth >> lotLength;
+
+  // Test to ensure lot size valid
+  while (lotWidth<=0 || lotLength <=0) {
+    // Reprompt for new values
+    cout << "Enter lot width and length - must be positive values: ";
+    cin >> lotWidth >> lotLength;
+  } // end while
+
+  // Test width and length and reverse so width always smaller number
+  if (lotWidth>lotLength) {
+    temp = lotWidth;
+    lotWidth = lotLength;
+    lotLength = temp;
+  } // end if
+
+  // get dimensions
+  cout << "Enter house width and length (0 0 to stop): ";
+  cin >> houseWidth >> houseLength;
+
+  // loop until sentinel values (0 0) entered
+  while (!(houseWidth==0 && houseLength==0)) {
+
+    if (houseWidth<=0 || houseLength<=0) {
+      // // Tell user that dimensions not valid
+      cout << "Invalid house dimensions - must be positive numbers." << endl;
+
+    } else {
+      // Process dimensions to see if they are meet rules
+
+      // First ensure width is smaller number
+      if (houseWidth>houseLength) {
+        temp = houseWidth;
+        houseWidth = houseLength;
+        houseLength = temp;
+      } // end if
+
+      // Now time to do the tests
+      if (lotWidth<(houseWidth+2*LOTCLEARANCE) || lotLength<(houseLength+2*LOTCLEARANCE)) {
+        cout << "House does not fit lot line restriction (min 2m clearance)." << endl;
+      } else if (0.25*(lotWidth*lotLength)>(houseWidth*houseLength)) {
+        cout << "House is too small (min. 25% of the lot)." << endl;
+      } else if (0.4*(lotWidth*lotLength)<(houseWidth*houseLength)) {
+        cout << "House is too large (max. 40% of the lot)." << endl;
+      } else {
+        cout << "House fits the lot." << endl;
+      } // end if
+
+    } // end if
+
+    // Get a new set of house dimensions
+    cout << "Enter house width and length (0 0 to stop): ";
+    cin >> houseWidth >> houseLength;
+
+  } // end while
+
+}

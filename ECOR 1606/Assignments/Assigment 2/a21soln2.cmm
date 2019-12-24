@@ -1,0 +1,42 @@
+// This program estimates pi based on positive integer n
+
+{
+
+    // Variables
+    double count = 0, // we will count up to n
+           n,
+           term, // the value of the current term
+           result = 0; // our final answer
+
+    // Prompt for n and capture value from user
+    cout << "Please enter a positive integer: ";
+    cin >> n;
+
+    // Test n to ensure it is an integer and greater than 0
+    if (! (isInt(n) && n>0)) {
+        cout << "Invalid input: n must be an integer greater than 0" << endl;
+    } else {
+        // valid input
+
+        // go around the loop n+1 times (from 0 up to n)
+        while (count <= n) {
+
+            // calculate the current term
+            term = 4/(2*count+1);
+
+            // if count is even (i.e. count/2 is an integer) we add the term, otherwise we subtract it
+            if (isInt(count/2)) {
+                result = result + term;
+            } else {
+                result = result - term;
+            } // end if
+
+            // increment the count
+            count = count + 1;
+        } // end while
+
+        // output the estimate of pi
+        cout << "The estimated value of pi is: " << result << endl;
+    } // end if
+
+}

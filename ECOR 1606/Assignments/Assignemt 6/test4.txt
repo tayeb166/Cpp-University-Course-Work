@@ -1,0 +1,12 @@
+1
+100
+365
+-2
+6.5
+this entire line will be thrown away even with 345 76 -3 1234 numbers in it
+1000
+100
+2
+some more garbage
+what is going on?
+100
